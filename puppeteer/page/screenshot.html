@@ -1,0 +1,64 @@
+<script type="text/javascript">
+  RED.nodes.registerType("puppeteer-page-screenshot", {
+    category: "Puppeteer",
+    color: "#118ab2",
+    defaults: {
+      name: { value: "" },
+      fullpage: { falue: false },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "screenshot.svg",
+    label: function () {
+      return this.name || "Screenshot";
+    },
+    paletteLabel: "Screenshot",
+  });
+
+  RED.comms.subscribe("puppeteer-screenshot", function (event, obj) {
+    $("puppeteer-screenshot-" + obj.id)?.remove();
+    const container = document.getElementById(obj.id);
+    const img = document.createElementNS("http://www.w3.org/2000/svg", "image");
+    $(img)
+      .attr("id", "puppeteer-screenshot-" + obj.id)
+      .attr("y", "45")
+      .attr("width", 160)
+      .attr("href", "data:image/png;base64," + obj.image);
+    container.insertBefore(img, container.lastChild.nextSibling);
+  });
+</script>
+
+<script type="text/x-red" data-template-name="puppeteer-page-screenshot">
+    <div class="form-row">
+        <label for="node-input-fullpage" style="width: auto !important; padding-right:10px"><i class="fa fa-arrows-alt"></i> Capture Full Page</label>
+        <input type="checkbox" id="node-input-fullpage" style="margin-top: 0; display:inline-block; width:auto;" />
+    </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+  </div>
+  <div class="form-tips">
+    <span data-i18n="[html]tip1">
+      This node takes a screenshot(captures screen) from the current page. If <code>Capture Full Page</code> flag is set, then the screenshot is from the full scrollable page. It deafults to <i><b>false</b></i>. The output from this node is:
+      <ul>
+        <li><code>msg.payload: <span style="color: blue">Buffer</span></code> - <b>buffer with captured screenshot</b></li>
+      </ul>
+    </span>
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="puppeteer-page-screenshot">
+  <p>Capture Screen</p>
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+      <dt>Capture Full Page<span class="property-type">boolean</span></dt>
+      <dd>When true, takes a screenshot of the full scrollable page. Defaults to <code>false</code>.</dd>
+  </dl>
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+      <dt>msg.payload<span class="property-type">Buffer</span></dt>
+      <dd>buffer with captured screenshot.</dd>
+  </dl>
+  <h3>Details</h3>
+      <p>Browser screenshot, require focus / active to browser</p>
+</script>

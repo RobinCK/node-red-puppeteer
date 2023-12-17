@@ -1,0 +1,113 @@
+<script type="text/javascript">
+  RED.nodes.registerType("puppeteer-page-download", {
+    category: "Puppeteer",
+    color: "#fe6d73",
+    defaults: {
+      selector: { value: "", required: true },
+      selectortype: { value: "str" },
+      button: { value: "left", required: true },
+      clickCount: { value: 1 },
+      delay: { value: 0 },
+      downloadPath: { value: "", required: false },
+      downloadPathtype: { value: "str" },
+      fileName: { value: "", required: false },
+      fileNametype: { value: "str" },
+      name: { value: "" },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "download.svg",
+    label: function () {
+      let label =
+        this.name == ""
+          ? this.selectortype != "str"
+            ? this.selectortype + "." + this.selector
+            : this.selector.replace(/.*[> ]/, "")
+          : this.name;
+      return label || "Download";
+    },
+    paletteLabel: "Download",
+    oneditprepare: function () {
+      $("#node-input-selector").typedInput({
+        type: "str",
+        types: ["str", "msg", "flow", "global"],
+        typeField: "#node-input-selectortype",
+      });
+      $("#node-input-downloadPath").typedInput({
+        type: "str",
+        types: ["str", "msg", "flow", "global"],
+        typeField: "#node-input-downloadPathtype",
+      });
+      $("#node-input-fileName").typedInput({
+        type: "str",
+        types: ["str", "msg", "flow", "global"],
+        typeField: "#node-input-fileNametype",
+      });
+    },
+  });
+</script>
+
+<script type="text/x-red" data-template-name="puppeteer-page-download">
+  <div class="form-row">
+    <label for="node-input-selector"><i class="fa fa-hashtag"></i> Selector</label>
+    <input id="node-input-selector"></input>
+    <input type="hidden" id="node-input-selectortype"></input>
+  </div>
+  <div class="form-row">
+    <label for="node-input-button"><i class="fa fa-mouse-pointer"></i> Button</label>
+    <select id="node-input-button" name="button">
+      <option value="left">Left</option>
+      <option value="middle">Middle</option>
+      <option value="right">Right</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-input-clickCount"><i class="fa fa-plus"></i> Click Count</label>
+    <input type="number" id="node-input-clickCount" style="width:100px;" placeholder="1" />
+    <span >time(s)</span>
+  </div>
+  <div class="form-row">
+    <label for="node-input-delay"><i class="fa fa-clock-o"></i> Delay</label>
+    <input type="number" id="node-input-delay" style="width:100px;" placeholder="0" />
+    <span >milliseconds</span>
+  </div>
+  <div class="form-row">
+    <label for="node-input-downloadPath"><i class="fa fa-download"></i> Download Path</label>
+    <input id="node-input-downloadPath"></input>
+    <input type="hidden" id="node-input-downloadPathtype"></input>
+  </div>
+  <div class="form-row">
+    <label for="node-input-fileName"><i class="fa fa-file-o"></i> File name</label>
+    <input id="node-input-fileName"></input>
+    <input type="hidden" id="node-input-fileNametype"></input>
+  </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+  </div>
+  <div class="form-tips">
+    <span data-i18n="[html]tip1">This node downloads a file by clicking on a specified selector. Essetially that can be done with the click node as well, but here you can specify download location and also if this node is followed by rename node<b><u><i>(in storage section)</i></u></b> with specified download path and filename, it can change the filename directly, but in order to get this to work, in the rename node<b><u><i>(in storage section)</i></u></b> the old file path needs to be set to <code>msg.old</code> and the new file path needs to be set to <code>msg.new</code>. The output of this node is a <b>msg</b> which contains <code>msg.puppeteer</code>, <code>msg.new & msg.old</code> (<b><u style="text-decoration-color: #fe6d73">only when download path and file path are specified</u></b>) and <code>msg.error</code> when an error ocurred.
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="puppeteer-page-download">
+      <p>Dowload a file</p>
+      <h3>Inputs</h3>
+      <dl class="message-properties">
+          <dt>Selector<span class="property-type">string</span></dt>
+          <dd>A <a href="#interface-selector" title="Selector">selector</a> to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.</dd>
+          <dt>Button<span class="property-type">string</span></dt>
+          <dd>Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.&lt;"left"|"right"|"middle"&gt; Defaults to <code>left</code>.</dd>
+          <dt>Click Count<span class="property-type">number</span></dt>
+          <dt>Delay<span class="property-type">number</span></dt>
+          <dt>Download path<span class="property-type">string</span></dt>
+          <dd>Specify custom download path. Leave the field blank for default download path. Defaults to user's default browser download path.</dd>
+          <dt>File name<span class="property-type">string</span></dt>
+          <dd>Specify custom file name. Leave the field blank for default file name. Please note that in order for this to work this node needs to be followed by the rename node<b><u><i>(in storage section)</i></u></b>. Defaults to default file name.</dd>
+      </dl>
+      <h3>Details</h3>
+          <p>This method fetches an element with <code>selector</code>, scrolls it into view if needed, and then uses <code>page.mouse</code> to click in the center of the element.
+          If there's no element matching <code>selector</code>, the method throws an error. The main difference between this and click node is that with this node you can specify
+          download path and file name. But, in order the custom filename to work, this node must have download path and file name specified and be followed by a rename node<b><u><i>(in storage section)</i></u></b> where
+          the old file path should be set to <code>msg.old</code> and the new file path should be set to <code>msg.new</code></p>
+</script>

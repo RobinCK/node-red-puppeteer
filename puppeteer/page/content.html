@@ -1,0 +1,34 @@
+<script type="text/javascript">
+  RED.nodes.registerType("puppeteer-page-content", {
+    category: "Puppeteer",
+    color: "#118ab2",
+    defaults: {
+      name: { value: "" },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "fa-file-code-o.png",
+    label: function () {
+      return this.name || "content";
+    },
+    paletteLabel: "content",
+  });
+</script>
+
+<script type="text/x-red" data-template-name="puppeteer-page-content">
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+  </div>
+  <div class="form-tips">
+    <span data-i18n="[html]tip1">
+      This node gets page's content from <code>puppeteer.page</code> object
+    </span>
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="puppeteer-page-content">
+  <p>Get content from page</p>
+  <h3>Details</h3>
+  <p>This node gets page's content from <code>puppeteer.page</code> object</p>
+</script>

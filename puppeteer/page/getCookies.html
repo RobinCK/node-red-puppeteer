@@ -1,0 +1,47 @@
+<script type="text/javascript">
+  RED.nodes.registerType("puppeteer-page-getCookies", {
+    category: "Puppeteer",
+    color: "#06d6a0",
+    defaults: {
+      name: { value: "" },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "cookie.svg",
+    label: function () {
+      let label = this.name == "" ? "Get Cookies" : this.name;
+      return label || "Get Cookies";
+    },
+    paletteLabel: "Get Cookies",
+  });
+</script>
+
+<script type="text/x-red" data-template-name="puppeteer-page-getCookies">
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+  </div>
+  <div class="form-tips">
+    <span data-i18n="[html]tip1">This node retrieves all cookies using the passed page object as input (<code>msg.puppeteer.page</code>). This node otputs list of cookies in <code>msg.payload</code> property. Each object contains the following properties:
+      <ul>
+        <li><code>name: <span style="color: blue">string</span></code></li>
+        <li><code>value: <span style="color: blue">string</span></code></li>
+        <li><code>domain: <span style="color: blue">string</span></code></li>
+        <li><code>path: <span style="color: blue">string</span></code></li>
+        <li><code>expires: <span style="color: blue">number</span></code></li>
+        <li><code>size: <span style="color: blue">number</span></code></li>
+        <li><code>httpOnly: <span style="color: blue">boolean</span></code></li>
+        <li><code>secure: <span style="color: blue">boolean</span></code></li>
+        <li><code>session: <span style="color: blue">boolean</span></code></li>
+        <li><code>sameSite: <span style="color: blue">string</span></code></li>
+        <li><code>sameParty: <span style="color: blue">boolean</span></code></li>
+        <li><code>sourceScheme: <span style="color: blue">string</span></code></li>
+        <li><code>sourcePort: <span style="color: blue">number</span></code></li>
+    </span>
+
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="puppeteer-page-getCookies">
+  This node returns all the cookies from the passed puppeteer page object
+</script>

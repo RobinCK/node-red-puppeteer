@@ -1,0 +1,46 @@
+{
+  "name": "node-red-puppeteer",
+  "version": "1.0.1",
+  "description": "NodeRED nodes to control a headless chrome with puppeteer",
+  "main": "index.js",
+  "scripts": {},
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^21.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RobinCK/node-red-puppeteer"
+  },
+  "keywords": [
+    "chrome",
+    "browser automation",
+    "puppeteer",
+    "node-red"
+  ],
+  "node-red": {
+    "version": ">=3.0.0",
+    "nodes": {
+      "puppeteer-browser-launch": "puppeteer/browser/launch.js",
+      "puppeteer-browser-close": "puppeteer/browser/close.js",
+      "puppeteer-browser-newPage": "puppeteer/browser/newPage.js",
+      "puppeteer-page-goto": "puppeteer/page/goto.js",
+      "puppeteer-page-screenshot": "puppeteer/page/screenshot.js",
+      "puppeteer-page-content": "puppeteer/page/content.js",
+      "puppeteer-page-click": "puppeteer/page/click.js",
+      "puppeteer-page-download": "puppeteer/page/download.js",
+      "puppeteer-page-focus": "puppeteer/page/focus.js",
+      "puppeteer-page-waitFor": "puppeteer/page/waitFor.js",
+      "puppeteer-page-getCookies": "puppeteer/page/getCookies.js",
+      "puppeteer-page-setCookies": "puppeteer/page/setCookies.js",
+      "puppeteer-page-deleteCookies": "puppeteer/page/deleteCookies.js",
+      "puppeteer-page-close": "puppeteer/page/close.js",
+      "puppeteer-page-keyboard-type": "puppeteer/page/keyboard/type.js",
+      "puppeteer-page-keyboard-press": "puppeteer/page/keyboard/press.js",
+      "puppeteer-page-get-value": "puppeteer/page/get.js",
+      "puppeteer-page-set-value": "puppeteer/page/set.js",
+      "puppeteer-page-upload": "puppeteer/page/upload.js",
+      "puppeteer-rename": "puppeteer/page/rename.js"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<script type="text/javascript">
+  RED.nodes.registerType("puppeteer-rename", {
+    category: "storage",
+    color: "#deb887",
+    defaults: {
+      oldFilePath: { value: "", required: false },
+      oldFilePathtype: { value: "str" },
+      newFilePath: { value: "", required: false },
+      newFilePathtype: { value: "str" },
+      name: { value: "" },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "rename.svg",
+    label: function () {
+      return name || "Rename";
+    },
+    paletteLabel: "Rename",
+    oneditprepare: function () {
+      $("#node-input-oldFilePath").typedInput({
+        type: "str",
+        types: ["str", "msg", "flow", "global"],
+        typeField: "#node-input-oldFilePathtype",
+      });
+      $("#node-input-newFilePath").typedInput({
+        type: "str",
+        types: ["str", "msg", "flow", "global"],
+        typeField: "#node-input-newFilePathtype",
+      });
+    },
+  });
+</script>
+
+<script type="text/x-red" data-template-name="puppeteer-rename">
+  <div class="form-row">
+    <label for="node-input-oldFilePath"><i class="fa fa-file"></i> Old File Path</label>
+    <input id="node-input-oldFilePath"></input>
+    <input type="hidden" id="node-input-oldFilePathtype"></input>
+  </div>
+  <div class="form-row">
+    <label for="node-input-newFilePath"><i class="fa fa-file-o"></i> New File Path</label>
+    <input id="node-input-newFilePath"></input>
+    <input type="hidden" id="node-input-newFilePathtype"></input>
+  </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="puppeteer-rename">
+      <p>Rename file</p>
+      <h3>Inputs</h3>
+      <dl class="message-properties">
+          <dt>Old file path<span class="property-type">string</span></dt>
+          <dt>New file path<span class="property-type">string</span></dt>
+      </dl>
+      <h3>Details</h3>
+          <p>This node renames the file from old file path to the new file path, or essetially it moves it from one location to another if that is how the paths are specified.</p>
+</script>

@@ -1,0 +1,7 @@
+.gitignore
+
+# NPM
+node_modules
+.npm
+.npmrc
+.nvmrc

@@ -1,0 +1,56 @@
+<script type="text/javascript">
+  RED.nodes.registerType("puppeteer-page-focus", {
+    category: "Puppeteer",
+    color: "#06d6a0",
+    defaults: {
+      name: { value: "" },
+      selector: { value: "", required: true },
+      selectortype: { value: "str", required: true },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "focus.svg",
+    label: function () {
+      let label =
+        this.name == ""
+          ? this.selectortype != "str"
+            ? this.selectortype + "." + this.selector
+            : this.selector.replace(/.*[> ]/, "")
+          : this.name;
+      return label || "Focus";
+    },
+    paletteLabel: "Focus",
+    oneditprepare: function () {
+      $("#node-input-selector").typedInput({
+        type: "str",
+        types: ["str", "msg", "flow", "global"],
+        typeField: "#node-input-selectortype",
+      });
+    },
+  });
+</script>
+
+<script type="text/x-red" data-template-name="puppeteer-page-focus">
+  <div class="form-row">
+    <label for="node-input-selector">selector</label>
+    <input id="node-input-selector"></input>
+    <input type="hidden" id="node-input-selectortype"></input>
+  </div>
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+  </div>
+  <div class="form-tips">
+    <span data-i18n="[html]tip1">
+      This node fetches an element with <code>selector</code> and puts it in focus.
+      If there's no element matching <code>selector</code>, the node throws an error.
+    </span>
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="puppeteer-page-focus">
+  <p>Focus on element</p>
+  <h3>Details</h3>
+  <p>This node fetches an element with <code>selector</code> and puts it in focus.
+    If there's no element matching <code>selector</code>, the node throws an error.</p>
+</script>
