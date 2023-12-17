@@ -29,6 +29,6 @@ Group | Node Name | Detailed information
 
 #### Install these nodes using the following command or directly via node-red dashboard
 ```bash
-npm install node-red-puppeteer
+npm install @robinck/node-red-puppeteer
 ```
 
