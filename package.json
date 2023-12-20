@@ -1,16 +1,19 @@
 {
   "name": "@robinck/node-red-puppeteer",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "NodeRED nodes to control a headless chrome with puppeteer",
   "main": "index.js",
   "scripts": {},
   "license": "MIT",
   "dependencies": {
-    "puppeteer": "^21.6.1"
+    "puppeteer": "~19.8.5"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/RobinCK/node-red-puppeteer"
+  },
+  "engines": {
+    "node": ">=16.13.2"
   },
   "keywords": [
     "chrome",
@@ -21,26 +24,26 @@
   "node-red": {
     "version": ">=3.0.0",
     "nodes": {
-      "puppeteer-browser-launch": "puppeteer/browser/launch.js",
-      "puppeteer-browser-close": "puppeteer/browser/close.js",
-      "puppeteer-browser-newPage": "puppeteer/browser/newPage.js",
-      "puppeteer-page-goto": "puppeteer/page/goto.js",
-      "puppeteer-page-screenshot": "puppeteer/page/screenshot.js",
-      "puppeteer-page-content": "puppeteer/page/content.js",
-      "puppeteer-page-click": "puppeteer/page/click.js",
-      "puppeteer-page-download": "puppeteer/page/download.js",
-      "puppeteer-page-focus": "puppeteer/page/focus.js",
-      "puppeteer-page-waitFor": "puppeteer/page/waitFor.js",
-      "puppeteer-page-getCookies": "puppeteer/page/getCookies.js",
-      "puppeteer-page-setCookies": "puppeteer/page/setCookies.js",
-      "puppeteer-page-deleteCookies": "puppeteer/page/deleteCookies.js",
-      "puppeteer-page-close": "puppeteer/page/close.js",
-      "puppeteer-page-keyboard-type": "puppeteer/page/keyboard/type.js",
-      "puppeteer-page-keyboard-press": "puppeteer/page/keyboard/press.js",
-      "puppeteer-page-get-value": "puppeteer/page/get.js",
-      "puppeteer-page-set-value": "puppeteer/page/set.js",
-      "puppeteer-page-upload": "puppeteer/page/upload.js",
-      "puppeteer-rename": "puppeteer/page/rename.js"
+      "puppet-browser-launch": "puppeteer/browser/launch.js",
+      "puppet-browser-close": "puppeteer/browser/close.js",
+      "puppet-browser-newPage": "puppeteer/browser/newPage.js",
+      "puppet-page-goto": "puppeteer/page/goto.js",
+      "puppet-page-screenshot": "puppeteer/page/screenshot.js",
+      "puppet-page-content": "puppeteer/page/content.js",
+      "puppet-page-click": "puppeteer/page/click.js",
+      "puppet-page-download": "puppeteer/page/download.js",
+      "puppet-page-focus": "puppeteer/page/focus.js",
+      "puppet-page-waitFor": "puppeteer/page/waitFor.js",
+      "puppet-page-getCookies": "puppeteer/page/getCookies.js",
+      "puppet-page-setCookies": "puppeteer/page/setCookies.js",
+      "puppet-page-deleteCookies": "puppeteer/page/deleteCookies.js",
+      "puppet-page-close": "puppeteer/page/close.js",
+      "puppet-page-keyboard-type": "puppeteer/page/keyboard/type.js",
+      "puppet-page-keyboard-press": "puppeteer/page/keyboard/press.js",
+      "puppet-page-get-value": "puppeteer/page/get.js",
+      "puppet-page-set-value": "puppeteer/page/set.js",
+      "puppet-page-upload": "puppeteer/page/upload.js",
+      "puppet-rename": "puppeteer/page/rename.js"
     }
   }
 }
