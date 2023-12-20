@@ -1,0 +1,36 @@
+<script type="text/javascript">
+  RED.nodes.registerType("puppeteer-page-localstorage", {
+    category: "Puppeteer",
+    color: "#1a424f",
+    defaults: {
+      name: { value: '' },
+      key: { value: '' },
+      value: { value: '' },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "set.svg",
+    label: function () {
+      return this.name || "Localstorage";
+    },
+    paletteLabel: "Localstorage",
+  });
+</script>
+
+<script type="text/x-red" data-template-name="puppeteer-page-localstorage">
+    <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+    </div>
+    <div class="form-row">
+      <label for="node-input-key"><i class="fa fa-tag"></i> Key</label>
+      <input type="text" id="node-input-key" style="width:70%;" placeholder="Key" />
+    </div>
+    <div class="form-row">
+      <label for="node-input-value"><i class="fa fa-tag"></i> Value</label>
+      <input type="text" id="node-input-value" style="width:70%;" placeholder="Value" />
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="puppeteer-page-localstorage">
+</script>

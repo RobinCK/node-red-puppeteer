@@ -1,0 +1,41 @@
+<script type="text/javascript">
+  RED.nodes.registerType("puppeteer-page-viewport", {
+    category: "Puppeteer",
+    color: "#1a424f",
+    defaults: {
+      name: { value: '' },
+      width: { value: 800 },
+      height: { value: 600 },
+      deviceScaleFactor: { value: 1 },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "set.svg",
+    label: function () {
+      return this.name || "Viewport";
+    },
+    paletteLabel: "Viewport",
+  });
+</script>
+
+<script type="text/x-red" data-template-name="puppeteer-page-viewport">
+    <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" style="width:70%;" placeholder="Name" />
+    </div>
+    <div class="form-row">
+      <label for="node-input-width"><i class="fa fa-tag"></i> Width</label>
+      <input type="text" id="node-input-width" style="width:70%;" placeholder="Width" />
+    </div>
+    <div class="form-row">
+      <label for="node-input-height"><i class="fa fa-tag"></i> Height</label>
+      <input type="text" id="node-input-height" style="width:70%;" placeholder="Height" />
+    </div>
+    <div class="form-row">
+      <label for="node-input-scale"><i class="fa fa-tag"></i> Scale</label>
+      <input type="text" id="node-input-scale" style="width:70%;" placeholder="Scale" />
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="puppeteer-page-viewport">
+</script>

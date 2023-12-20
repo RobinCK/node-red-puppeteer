@@ -1,6 +1,6 @@
 {
   "name": "@robinck/node-red-puppeteer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NodeRED nodes to control a headless chrome with puppeteer",
   "main": "index.js",
   "scripts": {},
@@ -43,7 +43,9 @@
       "puppet-page-get-value": "puppeteer/page/get.js",
       "puppet-page-set-value": "puppeteer/page/set.js",
       "puppet-page-upload": "puppeteer/page/upload.js",
-      "puppet-rename": "puppeteer/page/rename.js"
+      "puppet-rename": "puppeteer/page/rename.js",
+      "puppet-viewport": "puppeteer/page/viewport.js",
+      "puppet-local-storage": "puppeteer/page/localStorage.js"
     }
   }
 }
