@@ -1,6 +1,6 @@
 {
   "name": "@robinck/node-red-puppeteer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "NodeRED nodes to control a headless chrome with puppeteer",
   "main": "index.js",
   "scripts": {},
@@ -13,7 +13,7 @@
     "url": "https://github.com/RobinCK/node-red-puppeteer"
   },
   "engines": {
-    "node": ">=16.13.2"
+    "node": ">=12"
   },
   "keywords": [
     "chrome",
