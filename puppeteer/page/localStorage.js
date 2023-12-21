@@ -5,9 +5,9 @@ module.exports = function (RED) {
 
     this.on("input", async function (msg, send, done) {
       try {
-        await msg.puppeteer.page.evaluate(() => {
-          window.localStorage.setItem(nodeConfig.key, nodeConfig.value);
-        });
+        await msg.puppeteer.page.evaluate((c) => {
+          window.localStorage.setItem(c.key, c.value);
+        }, nodeConfig);
         // Sending the msg
         send(msg);
 
