@@ -14,7 +14,7 @@ module.exports = function (RED) {
         await msg.puppeteer.page.setViewport({
           width: parseInt(config.width),
           height: parseInt(config.height),
-          deviceScaleFactor: parseInt(config.deviceScaleFactor)
+          deviceScaleFactor: parseInt(config.scale)
         });
 
         // Screen captured

@@ -1,23 +1,16 @@
 module.exports = function (RED) {
-  function PuppeteerPageLocalStorage(config) {
-    RED.nodes.createNode(this, config);
+  function PuppeteerPageLocalstorage(nodeConfig) {
+    RED.nodes.createNode(this, nodeConfig);
     var node = this; // Referencing the current node
 
     this.on("input", async function (msg, send, done) {
       try {
-        // Capturing screen
-        node.status({
-          fill: "blue",
-          shape: "dot",
-          text: `set localstorage ...`,
-        });
         await msg.puppeteer.page.evaluate(() => {
-          localStorage.setItem(config.key, config.value);
+          window.localStorage.setItem(nodeConfig.key, nodeConfig.value);
         });
-
-        // Screen captured
-        node.status({ fill: "green", shape: "dot", text: `localstorage changed` });
+        // Sending the msg
         send(msg);
+
       } catch (e) {
         // If an error occured
         node.error(e);
@@ -39,8 +32,8 @@ module.exports = function (RED) {
     });
     oneditprepare: function oneditprepare() {
       $("#node-input-name").val(this.name);
+      $("#node-input-waitUntil").val(this.waitUntil);
     }
   }
-  RED.nodes.registerType("puppeteer-page-localstorage", PuppeteerPageLocalStorage);
+  RED.nodes.registerType("puppeteer-page-localstorage", PuppeteerPageLocalstorage);
 };
-

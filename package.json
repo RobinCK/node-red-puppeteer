@@ -1,6 +1,6 @@
 {
   "name": "@robinck/node-red-puppeteer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "NodeRED nodes to control a headless chrome with puppeteer",
   "main": "index.js",
   "scripts": {},
